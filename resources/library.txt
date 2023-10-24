@@ -1,0 +1,13 @@
+[Libro
+titolociao
+Numero di pagine 329
+Autore io
+Editore tu, Libro
+titolociaopiubello io
+Numero di pagine 90
+Autore sempre io
+Editore sempre tu, Libro
+titolobuongiorno
+Numero di pagine 203
+Autore stavolta tu
+Editore stavolta io]

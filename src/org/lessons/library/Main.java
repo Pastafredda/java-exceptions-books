@@ -1,11 +1,15 @@
 package org.lessons.library;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Arrays;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+
         Scanner scanner = new Scanner(System.in);
         System.out.println("inserisci quanti libri vuoi inserire");
         int numeroLibri = Integer.parseInt(scanner.nextLine());
@@ -29,6 +33,42 @@ public class Main {
                 }
         }
         System.out.println(Arrays.toString(libroLista));
+
+        // provo a scrivere nel file
+        FileWriter writer= null;
+        try {
+            writer = new FileWriter("./resources/library.txt");
+            writer.write(Arrays.toString(libroLista));
+            writer.close();
+        } catch (IOException e) {
+            System.out.println("impossibile aprire il file");
+        }finally {
+            try {
+                if (writer != null){
+                    System.out.println("Chiudo il file");
+                    writer.close();
+                }
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        //provo a leggere il file
+        Scanner fileReader= null;
+        try {
+             fileReader = new Scanner(new File("./resources/library.txt"));
+            while (fileReader.hasNextLine()){
+                String line = fileReader.nextLine();
+                System.out.println(line);
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("file non trovato");
+        }finally {
+            if (fileReader != null){
+                System.out.println("Chiudo il file");
+                fileReader.close();
+            }
+        }
         scanner.close();
     }
 }
