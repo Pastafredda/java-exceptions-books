@@ -11,7 +11,6 @@ public class Main {
         int numeroLibri = Integer.parseInt(scanner.nextLine());
         Libro[] libroLista =  new Libro[numeroLibri];
         for (int i = 0; i < libroLista.length; i++) {
-            while (true){
                 try {
                     System.out.println("Iserisci il titolo ");
                     String titoloLibro = scanner.nextLine();
@@ -24,12 +23,10 @@ public class Main {
                     Libro libro = new Libro(titoloLibro,numeroPagine,autoreLibro,editoreLibro);
                     libroLista[i] = libro;
                     System.out.println("Hai aggiunto un libro " + (i+1));
-                    break;
-                }catch (IllegalArgumentException e) {
-                    System.out.println("Errore ci sono alcuni parametri non validi" );
-                }
 
-            }
+                }catch (IllegalArgumentException e) {
+                    System.out.println("Errore" + " " + e.getMessage());
+                }
         }
         System.out.println(Arrays.toString(libroLista));
         scanner.close();

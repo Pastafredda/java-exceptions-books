@@ -7,11 +7,17 @@ public class Libro {
     private String editore;
 
     public Libro(String titolo, int numeroPagine, String autore, String editore) throws IllegalArgumentException{
-        if (titolo == null || titolo.trim().isEmpty() ||
-                numeroPagine <= 0 ||
-                autore == null || autore.trim().isEmpty()||
-                editore == null || editore.trim().isEmpty()){
-            throw new IllegalArgumentException();
+        if (titolo == null || titolo.trim().isEmpty()){
+            throw new IllegalArgumentException("Titolo non valido");
+        }
+        if (numeroPagine <= 0){
+            throw new IllegalArgumentException("Numero di pagine non valido");
+        }
+        if (autore == null || autore.trim().isEmpty()){
+            throw new IllegalArgumentException("Autore non valido");
+        }
+        if ( editore == null || editore.trim().isEmpty()){
+            throw new IllegalArgumentException("Editore non valido");
         }
         this.titolo= titolo;
         this.numeroPagine= numeroPagine;
